@@ -23,8 +23,5 @@ A partir deste código, altere o projeto criando 3 adaptadores: um pra cada uma
 das bibliotecas dos serviços mencionados.
 Com isto, será possível trocar um serviço pelo outro sem alterar o código do projeto.
 
-Adicionalmente, você perceberá que o código das empresas tem formato diferente em cada serviço.
-Como os adaptadores poderiam padronizar estes códigos e tornar o formato igual para todos os serviços?
-
 No projeto disponibilizado, a classe `Principal` é na nossa classe `Cliente`: é ela quem usa os adaptadores. 
-Analisando o novo código da classe principal, que outro padrão poderíamos aplicar em seguida?
+Analisando o novo código da classe principal, o outro padrão poderíamos aplicar seria o Factory.
