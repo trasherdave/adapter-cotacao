@@ -28,8 +28,6 @@ import io.github.mainstringargs.yahooFinance.domain.FinancialData;
  */
 public class YahooAdapter implements AdapterServicoCotacao {
 
-    private YahooAdapter yahooAdapter;
-
     @Override
     public double cotacao(String codigoEmpresa) {
         double preco = 0.0;

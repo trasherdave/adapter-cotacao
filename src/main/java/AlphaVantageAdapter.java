@@ -26,8 +26,6 @@ import java.time.format.DateTimeFormatter;
  */
 public class AlphaVantageAdapter implements AdapterServicoCotacao {
 
-    private AlphaVantageAdapter alphaVantageAdapter;
-
     @Override
     public double cotacao(String codigoEmpresa) {
         double preco = 0.0;
