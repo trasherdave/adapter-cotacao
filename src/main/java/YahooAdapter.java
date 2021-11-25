@@ -31,7 +31,8 @@ public class YahooAdapter implements AdapterServicoCotacao {
     private YahooAdapter yahooAdapter;
 
     @Override
-    public void cotacao(String codigoEmpresa) {
+    public double cotacao(String codigoEmpresa) {
+        double preco = 0.0;
 
         System.out.printf("Cotação da Empresa %s obtida pelo serviço Yahoo Finance: https://finance.yahoo.com%n", codigoEmpresa);
         YahooFinanceUrlBuilder builder
@@ -43,12 +44,16 @@ public class YahooAdapter implements AdapterServicoCotacao {
         FinancialData financials = financeData.getFinancialData();
         if (financials != null) {
             System.out.printf("Preço: %s %s%n", financials.getFinancialCurrency(), financials.getCurrentPrice().getRaw());
+
+            preco = financials.getCurrentPrice().getRaw().doubleValue();
+
         }
 
         System.out.println(builder.getURL());
         System.out.println("https://query1.finance.yahoo.com/v8/finance/chart/" + codigoEmpresa + "?period1=1546311600&period2=1556593200&interval=1d&includePrePost=False");
         System.out.println("---------------------------------------------------------------------");
 
+        return preco;
     }
 
 }

@@ -24,7 +24,8 @@ import java.time.format.DateTimeFormatter;
 public class QuandlAdapter implements AdapterServicoCotacao {
 
     @Override
-    public void cotacao(String codigoEmpresa) {
+    public double cotacao(String codigoEmpresa) {
+        double preco = 0.0;
 
         System.out.printf("Cotação da Empresa %s obtida pelo serviço Quandl: http://quandl.com/%n", codigoEmpresa);
         ClassicQuandlSession session = ClassicQuandlSession.create();
@@ -39,8 +40,12 @@ public class QuandlAdapter implements AdapterServicoCotacao {
             String date = formatter.format(row.getLocalDate("Date"));
             System.out.printf("Data: %s Preço: %s%n", date, row.getDouble("Close"));
             //System.out.println(result.toPrettyPrintedString());
+
+            preco = row.getDouble("Close");
         }
         System.out.println("---------------------------------------------------------------------");
+
+        return preco;
     }
 
 }

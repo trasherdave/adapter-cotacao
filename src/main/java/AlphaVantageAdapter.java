@@ -29,7 +29,9 @@ public class AlphaVantageAdapter implements AdapterServicoCotacao {
     private AlphaVantageAdapter alphaVantageAdapter;
 
     @Override
-    public void cotacao(String codigoEmpresa) {
+    public double cotacao(String codigoEmpresa) {
+        double preco = 0.0;
+
         System.out.printf("Cotação da Empresa %s obtida pelo serviço Alpha Vantage: http://www.alphavantage.co%n", codigoEmpresa);
 
         /*
@@ -49,10 +51,15 @@ public class AlphaVantageAdapter implements AdapterServicoCotacao {
             StockQuote stock = response.getStockQuote();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             System.out.printf("Data: %s Preço: %s%n", formatter.format(stock.getLatestTradingDay()), stock.getPrice());
+
+            preco = stock.getPrice();
+
         } catch (AlphaVantageException e) {
             System.out.println("Erro ao solicitar cotação da empresa " + codigoEmpresa + ": " + e.getMessage());
         }
         System.out.println("---------------------------------------------------------------------");
+
+        return preco;
     }
 
 }
